@@ -2687,6 +2687,26 @@ void ILI9341::progressBar(int x, int y, int w, int h, uint8_t val) {
   fillRect(x + 1, y + 1, w * (((float)val) / 100.0), h - 1, 0x09F1);
 }
 
+void ILI9341::HprogressBar(int x, int y, int w, int h, uint32_t color, uint8_t val, bool redraw)
+{
+  if (redraw)
+  {
+    fillRoundRect(x + 1, y + 1, w, h - 2, 7, 0);
+  }
+  drawRoundRect(x, y, w, h, 8, color);
+  fillRoundRect(x + 1, y + 1, w * (((float)val) / 100.0), h - 2, 7, color);
+}
+
+void ILI9341::VprogressBar(int x, int y, int w, int h, uint32_t color, uint8_t val, bool redraw)
+{
+  if (redraw)
+  {
+    fillRoundRect(x + 1, y + 1, w - 1, h - 1, 10, 0);
+  }
+  drawRoundRect(x, y, w, h, 10, color);
+  fillRoundRect(x + 1, y + (h - (h * (((float)val) / 100.0))), w - 2, h * (((float)val) / 100.0), 10, color);
+}
+
 void ILI9341::setBrightness(uint8_t brightness) {
   ledcSetup(2, 10000, 8);
   ledcAttachPin(TFT_LED_PIN, 2);

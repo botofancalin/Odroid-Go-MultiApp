@@ -92,7 +92,7 @@ void WebRadioClass::Run()
 	getvolume();
 	GO.drawAppMenu(F("WebRadio"), F("Vol-"), F("Next"), F("Vol+"));
 	GO.Lcd.setTextColor(ORANGE);
-	GO.Lcd.drawCentreString("Long press 'NEXT' to Exit", 158, 190, 2);
+	GO.Lcd.drawCentreString("Press B to Exit", 158, 190, 2);
 	preallocateBuffer = malloc(preallocateBufferSize);
 	preallocateCodec = malloc(preallocateCodecSize);
 	out = new AudioOutputI2S(0, 1);

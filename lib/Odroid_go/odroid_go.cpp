@@ -324,7 +324,7 @@ void ODROID_GO::begin(unsigned long baud)
 
   // ODROID_GO lcd INIT
   Lcd.begin();
-  Lcd.setRotation(1);
+  Lcd.setRotation(3);
   Lcd.fillScreen(BLACK);
   Lcd.setCursor(0, 0);
   Lcd.setTextColor(WHITE);

@@ -311,8 +311,8 @@ void OscilloscopeClass::ClearAndDrawDot(int i)
 
 void OscilloscopeClass::Run()
 {
-	pinMode(4, INPUT);
-	pinMode(15, INPUT);
+	pinMode(4, ANALOG);
+	pinMode(15, ANALOG);
 	exitprg = false;
 	GO.Lcd.fillScreen(BLACK);
 	DrawGrid();

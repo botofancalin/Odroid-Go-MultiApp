@@ -1,5 +1,6 @@
 #pragma once
 #include "odroid_go.h"
+#include <esp_wifi.h>
 
 #define CH1COLOR YELLOW
 #define CH2COLOR MAGENTA

@@ -18,7 +18,7 @@ private:
   AudioOutputI2S *out = NULL;
 
   const int preallocateBufferSize = 16384;
-  const int preallocateCodecSize = 85332;
+  const int preallocateCodecSize = 524288;
   void *preallocateBuffer = NULL;
   void *preallocateCodec = NULL;
 

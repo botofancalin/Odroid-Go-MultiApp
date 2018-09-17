@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "Wrappers.h"
 #include "Resources.h"
 
@@ -6,8 +7,6 @@ int SignalStrength = 0;
 
 void setup()
 {
-	pinMode(4, INPUT);
-	pinMode(15, INPUT);
 	GO.begin(115200);
 	preferences.begin("WiFi", false);
 	GO.WiFi_Mode = preferences.getInt("mode", 0);

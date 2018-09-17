@@ -1,9 +1,11 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
+#define SPI_FREQUENCY  40000000
+
 #define TFT_DC 21
 #define TFT_CS 5
-#define TFT_LED_PIN 14
+#define TFT_BL 14
 #define TFT_MOSI 23
 #define TFT_MISO 19
 #define TFT_SCLK 18

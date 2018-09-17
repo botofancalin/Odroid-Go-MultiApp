@@ -82,7 +82,7 @@ void SysinfoClass::Run()
 {
     while (!GO.BtnB.wasPressed())
     {
-        if (GO.JOY_X.wasAxisPressed() == 1)
+        if (GO.JOY_Y.wasAxisPressed() == 1)
         {
             if (page < PAGEMAX)
             {
@@ -95,7 +95,7 @@ void SysinfoClass::Run()
             done = false;
         }
 
-        if (GO.JOY_X.wasAxisPressed() == 2)
+        if (GO.JOY_Y.wasAxisPressed() == 2)
         {
             if (page > 0)
             {

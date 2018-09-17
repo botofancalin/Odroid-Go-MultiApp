@@ -6,15 +6,6 @@ void appReturn()
 {
 }
 
-void appSleep()
-{
-    preferences.begin("WiFi", false);
-    preferences.putInt("mode", (int)WiFi.getMode());
-    preferences.end();
-    //GO.setWakeupButton(BUTTON_B_PIN);
-    //GO.powerOFF();
-}
-
 void appAbout()
 {
     AboutClass AboutObj;
@@ -27,11 +18,11 @@ void appCfgbrightness()
     BrightnessObj.Run();
 }
 
-// void appOscilloscope()
-// {
-//     OscilloscopeClass OscilloscopeObj;
-//     OscilloscopeObj.Run();
-// }
+void appOscilloscope()
+{
+    OscilloscopeClass OscilloscopeObj;
+    OscilloscopeObj.Run();
+}
 
 // void appSdBrowser()
 // {
@@ -45,11 +36,11 @@ void appSysInfo()
     SysinfoObj.Run();
 }
 
-// void appWiFiSetup()
-// {
-//     WifiSettingsClass WifiSettingsObj;
-//     WifiSettingsObj.Run();
-// }
+void appWiFiSetup()
+{
+    WifiSettingsClass WifiSettingsObj;
+    WifiSettingsObj.Run();
+}
 
 // void appWebServer()
 // {
@@ -63,11 +54,11 @@ void appSysInfo()
 //     GamesListObj.Run();
 // }
 
-// void appWebRadio()
-// {
-//     WebRadioClass WebRadioObj;
-//     WebRadioObj.Run();
-// }
+void appWebRadio()
+{
+    WebRadioClass WebRadioObj;
+    WebRadioObj.Run();
+}
 
 // void appWeatherStation()
 // {

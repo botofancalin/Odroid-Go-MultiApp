@@ -27,6 +27,12 @@
 #include "utility/Button.h"
 #include "utility/battery.h"
 
+#include "AudioFileSourceSD.h"
+#include "AudioFileSourceICYStream.h"
+#include "AudioFileSourceBuffer.h"
+#include "AudioGeneratorMP3.h"
+#include "AudioOutputI2S.h"
+
 #define My_SD SD
 
 #include "Preferences.h"

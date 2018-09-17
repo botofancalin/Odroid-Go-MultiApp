@@ -4,13 +4,13 @@
 
 ODROID_GO::ODROID_GO()
 {
-    levelIDX = 0;
-    menuCount[levelIDX] = 0;
-    menuIDX = 0;
-    menucolor = getrgb(0, 0, 128);
-    windowcolor = getrgb(0, 0, 0);
-    menutextcolor = getrgb(255, 255, 255);
-    clearList();
+  levelIDX = 0;
+  menuCount[levelIDX] = 0;
+  menuIDX = 0;
+  menucolor = getrgb(0, 0, 128);
+  windowcolor = getrgb(0, 0, 0);
+  menutextcolor = getrgb(255, 255, 255);
+  clearList();
 }
 
 void ODROID_GO::setListCaption(String inCaption)
@@ -219,7 +219,7 @@ void ODROID_GO::execute()
 }
 
 void ODROID_GO::addMenuItem(uint32_t levelID, const char *menu_title, const char *btnA_title, const char *btnB_title,
-                             const char *btnC_title, signed char goto_level, const char *Menu_Img, void (*function)())
+                            const char *btnC_title, signed char goto_level, const char *Menu_Img, void (*function)())
 {
   uint32_t mCnt = menuCount[levelID];
   menuList[levelID] = (MenuCommandCallback *)realloc(menuList[levelID], (mCnt + 1) * sizeof(MenuCommandCallback));
@@ -235,6 +235,7 @@ void ODROID_GO::addMenuItem(uint32_t levelID, const char *menu_title, const char
 
 void ODROID_GO::show()
 {
+  update();
   drawMenu(menuList[levelIDX][menuIDX].title, menuList[levelIDX][menuIDX].btnAtitle, menuList[levelIDX][menuIDX].btnBtitle,
            menuList[levelIDX][menuIDX].btnCtitle, menucolor, windowcolor, menuList[levelIDX][menuIDX].MenuImg, menutextcolor);
 }
@@ -279,7 +280,7 @@ void ODROID_GO::btnRestore()
 }
 
 void ODROID_GO::drawMenu(String inmenuttl, String inbtnAttl, String inbtnBttl, String inbtnCttl, unsigned int inmenucolor,
-                          unsigned int inwindowcolor, const char *iMenuImg, unsigned int intxtcolor)
+                         unsigned int inwindowcolor, const char *iMenuImg, unsigned int intxtcolor)
 {
   lastBtnTittle[0] = inbtnAttl;
   lastBtnTittle[1] = inbtnBttl;
@@ -305,51 +306,60 @@ void ODROID_GO::drawMenu(String inmenuttl, String inbtnAttl, String inbtnBttl, S
 void ODROID_GO::begin(unsigned long baud)
 {
 
-    // UART
-    Serial.begin(baud);
+  // UART
+  Serial.begin(baud);
 
-    Serial.flush();
-    Serial.print("ODROID_GO initializing...");
+  Serial.flush();
+  Serial.print("ODROID_GO initializing...");
 
-    // Set GPIO mode for buttons
-    pinMode(BUTTON_A_PIN, INPUT_PULLUP);
-    pinMode(BUTTON_B_PIN, INPUT_PULLUP);
-    pinMode(BUTTON_MENU, INPUT_PULLUP);
-    pinMode(BUTTON_SELECT, INPUT_PULLUP);
-    pinMode(BUTTON_START, INPUT_PULLUP);
-    pinMode(BUTTON_VOLUME, INPUT_PULLUP);
-    pinMode(BUTTON_JOY_Y, INPUT_PULLDOWN);
-    pinMode(BUTTON_JOY_X, INPUT_PULLDOWN);
+  // Set GPIO mode for buttons
+  pinMode(BUTTON_A_PIN, INPUT_PULLUP);
+  pinMode(BUTTON_B_PIN, INPUT_PULLUP);
+  pinMode(BUTTON_MENU, INPUT_PULLUP);
+  pinMode(BUTTON_SELECT, INPUT_PULLUP);
+  pinMode(BUTTON_START, INPUT_PULLUP);
+  pinMode(BUTTON_VOLUME, INPUT_PULLUP);
+  pinMode(BUTTON_JOY_Y, INPUT_PULLDOWN);
+  pinMode(BUTTON_JOY_X, INPUT_PULLDOWN);
 
-    // ODROID_GO lcd INIT
-    Lcd.begin();
-    Lcd.setRotation(1);
-    Lcd.fillScreen(BLACK);
-    Lcd.setCursor(0, 0);
-    Lcd.setTextColor(WHITE);
-    Lcd.setTextSize(1);
-    Lcd.setBrightness(255);
+  // ODROID_GO lcd INIT
+  Lcd.begin();
+  Lcd.setRotation(1);
+  Lcd.fillScreen(BLACK);
+  Lcd.setCursor(0, 0);
+  Lcd.setTextColor(WHITE);
+  Lcd.setTextSize(1);
+  Lcd.setBrightness(255);
 
-    // Battery
-    battery.begin();
-    Serial.println("OK");
+  SD.begin(22, SPI, 40000000);
+
+  if (!SPIFFS.begin())
+  {
+    SPIFFS.format();
+    vTaskDelay(10 / portTICK_RATE_MS);
+    SPIFFS.begin();
+  }
+
+  // Battery
+  battery.begin();
+  Serial.println("OK");
 }
 
 void ODROID_GO::update()
 {
 
-    //Button update
-    BtnA.read();
-    BtnB.read();
-    BtnMenu.read();
-    BtnVolume.read();
-    BtnSelect.read();
-    BtnStart.read();
-    JOY_Y.readAxis();
-    JOY_X.readAxis();
+  //Button update
+  BtnA.read();
+  BtnB.read();
+  BtnMenu.read();
+  BtnVolume.read();
+  BtnSelect.read();
+  BtnStart.read();
+  JOY_Y.readAxis();
+  JOY_X.readAxis();
 
-    //Speaker update
-    battery.update();
+  //Speaker update
+  battery.update();
 }
 
 ODROID_GO::~ODROID_GO()

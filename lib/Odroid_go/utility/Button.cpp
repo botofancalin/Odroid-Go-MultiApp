@@ -36,7 +36,8 @@ Button::Button(uint8_t pin, uint8_t invert, uint32_t dbTime)
     _dbTime = dbTime;
     pinMode(_pin, INPUT_PULLUP);
     _state = digitalRead(_pin);
-    if (_invert != 0) _state = !_state;
+    if (_invert != 0)
+        _state = !_state;
     _time = millis();
     _lastState = _state;
     _changed = 0;
@@ -55,23 +56,28 @@ uint8_t Button::read(void)
 
     ms = millis();
     pinVal = digitalRead(_pin);
-    if (_invert != 0) pinVal = !pinVal;
-    if (ms - _lastChange < _dbTime) {
+    if (_invert != 0)
+        pinVal = !pinVal;
+    if (ms - _lastChange < _dbTime)
+    {
         _lastTime = _time;
         _time = ms;
         _changed = 0;
         return _state;
     }
-    else {
+    else
+    {
         _lastTime = _time;
         _lastState = _state;
         _state = pinVal;
         _time = ms;
-        if (_state != _lastState)   {
+        if (_state != _lastState)
+        {
             _lastChange = ms;
             _changed = 1;
         }
-        else {
+        else
+        {
             _changed = 0;
         }
         return _state;
@@ -87,41 +93,52 @@ uint8_t Button::readAxis()
     ms = millis();
     val = analogRead(_pin);
 
-    if (val > 3900) {
+    if (val > 3900)
+    {
         pinVal = 1;
         _axis = DPAD_V_FULL;
-    } else if (val > 1500 && val < 2000) {
+    }
+    else if (val > 1500 && val < 2000)
+    {
         pinVal = 1;
         _axis = DPAD_V_HALF;
-    } else {
+    }
+    else
+    {
         pinVal = 0;
         _axis = DPAD_V_NONE;
     }
 
-    if (_invert == 0) pinVal = !pinVal;
-    if (ms - _lastChange < _dbTime) {
+    if (_invert == 0)
+    {
+        pinVal = !pinVal;
+    }
+    if (ms - _lastChange < _dbTime)
+    {
         _lastTime = _time;
         _time = ms;
         _changed = 0;
         return _state;
     }
-    else {
+    else
+    {
         _lastTime = _time;
         _lastState = _state;
         _state = pinVal;
         _time = ms;
-        if (_state != _lastState)   {
+        if (_state != _lastState)
+        {
             _lastChange = ms;
             _changed = 1;
         }
-        else {
+        else
+        {
             _changed = 0;
         }
         return _state;
     }
     return _state && _changed;
 }
-
 
 /*----------------------------------------------------------------------*
  * isPressed() and isReleased() check the button state when it was last *

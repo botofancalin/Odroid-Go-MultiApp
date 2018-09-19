@@ -92,21 +92,21 @@ void ODROID_GO::nextList()
 
 void ODROID_GO::previousList()
 {
-  if (list_idx > list_page * LIST_PAGE_LABELS + list_lines - 1)
+  if (list_idx > list_page * LIST_PAGE_LABELS)
   {
     list_idx--;
   }
   else
   {
-    if (list_page > list_pages - 1)
+    if (list_page > 0)
     {
       list_page--;
     }
     else
     {
-      list_page = 0;
+      list_page = list_pages - 1;
     }
-    list_idx = list_page * LIST_PAGE_LABELS;
+    list_idx = list_page * LIST_PAGE_LABELS + list_lines - 1;
   }
   showList();
 }
@@ -331,7 +331,7 @@ void ODROID_GO::begin(unsigned long baud)
   Lcd.setTextSize(1);
   Lcd.setBrightness(255);
 
-  SD.begin(22, SPI, 40000000);
+  SD.begin(22, SPI, 27000000UL);
 
   if (!SPIFFS.begin())
   {

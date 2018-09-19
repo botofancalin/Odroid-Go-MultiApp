@@ -24,11 +24,11 @@ void appOscilloscope()
     OscilloscopeObj.Run();
 }
 
-// void appSdBrowser()
-// {
-//     SdBrowserClass SdBrowserObj;
-//     SdBrowserObj.Run();
-// }
+void appSdBrowser()
+{
+    SdBrowserClass SdBrowserObj;
+    SdBrowserObj.Run();
+}
 
 void appSysInfo()
 {

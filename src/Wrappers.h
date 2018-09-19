@@ -2,7 +2,7 @@
 #include "Apps/About.h"
 #include "Apps/CfgBrightness.h"
 #include "Apps/Oscilloscope.h"
-//#include "Apps/SdBrowser.h"
+#include "Apps/SdBrowser.h"
 #include "Apps/Sysinfo.h"
 #include "Apps/WiFiSettings.h"
 //#include "Apps/MyWebServer.h"
@@ -19,7 +19,7 @@ void appSleep();
 void appAbout();
 void appCfgbrightness();
 void appOscilloscope();
-//void appSdBrowser();
+void appSdBrowser();
 void appSysInfo();
 void appWiFiSetup();
 //void appWebServer();

@@ -1,7 +1,7 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
-#define SPI_FREQUENCY  40000000
+#define SPI_FREQUENCY  40000000UL
 
 #define TFT_DC 21
 #define TFT_CS 5

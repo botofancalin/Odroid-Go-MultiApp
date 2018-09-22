@@ -47,6 +47,12 @@ void TetrisClass::Run()
         GetNextPosRot(&next_pos, &next_rot);
         ReviseScreen(next_pos, next_rot);
         GO.update();
+        
+        if (GO.BtnB.wasPressed()) 
+        {
+            return;
+        }
+        
         delay(game_speed); // SPEED ADJUST
     }
 }
@@ -127,13 +133,13 @@ void TetrisClass::ClearKeys()
 //========================================================================
 bool TetrisClass::KeyPadLoop()
 {
-    if (GO.JOY_X.wasAxisPressed() == 1)
+    if (GO.JOY_X.wasAxisPressed() == 2)
     {
         ClearKeys();
         but_LEFT = true;
         return true;
     }
-    if (GO.JOY_X.wasAxisPressed() == 2)
+    if (GO.JOY_X.wasAxisPressed() == 1)
     {
         ClearKeys();
         but_RIGHT = true;

@@ -23,7 +23,7 @@ void appSdBrowser();
 void appSysInfo();
 void appWiFiSetup();
 void appWebServer();
-//void appGamesList();
+void appGamesList();
 void appWebRadio();
 void appWeatherStation();
 

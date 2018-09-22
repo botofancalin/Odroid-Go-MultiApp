@@ -21,8 +21,4 @@
 #define BUTTON_JOY_Y 35
 #define BUTTON_JOY_X 34
 
-
-#define SPEAKER_PIN 26
-#define TONE_PIN_CHANNEL 0
-
 #endif

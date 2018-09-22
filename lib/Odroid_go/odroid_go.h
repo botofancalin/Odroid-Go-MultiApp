@@ -72,9 +72,6 @@ class ODROID_GO
     void btnRestore();
     String lastBtnTittle[3];
 
-    //void setWakeupButton(uint8_t button);
-    //void powerOFF();
-
 #define DEBOUNCE_MS 10
     Button JOY_Y = Button(BUTTON_JOY_Y, true, DEBOUNCE_MS);
     Button JOY_X = Button(BUTTON_JOY_X, true, DEBOUNCE_MS);

@@ -224,7 +224,7 @@ void FlappyBirdClass::game_start()
     while (1)
     {
         // wait for push button
-        if (GO.BtnB.wasPressed())
+        if (GO.BtnA.wasPressed())
         {
             break;
         }

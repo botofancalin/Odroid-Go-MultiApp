@@ -31,7 +31,7 @@ void setup()
 	GO.addMenuItem(1, "WEBSERVER", "<", "OK", ">", -1, Webserver, appWebServer);
 	GO.addMenuItem(1, "SD BROWSER", "<", "OK", ">", -1, Browser, appSdBrowser);
 	//GO.addMenuItem(1, "TOOLS", "<", "OK", ">", -1, Tools, appListTools);
-	//GO.addMenuItem(1, "GAMES", "<", "OK", ">", -1, Games, appGamesList);
+	GO.addMenuItem(1, "GAMES", "<", "OK", ">", -1, Games, appGamesList);
 
 	GO.addMenuItem(2, "SYSTEM INFORMATIONS", "<", "OK", ">", -1, Sysinfo, appSysInfo);
 	GO.addMenuItem(2, "WIFI CONNECTION", "<", "OK", ">", -1, WifiConn, appWiFiSetup);

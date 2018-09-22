@@ -394,17 +394,22 @@ void SpaceShooterClass::spaceShoot_run()
   randomSeed(analogRead(2));
   while (1)
   {
-    if (GO.JOY_X.wasAxisPressed()==1)
+    if (GO.JOY_X.isAxisPressed() == 2)
     {
       left();
     }
-    if (GO.JOY_X.wasAxisPressed()==2)
+    if (GO.JOY_X.isAxisPressed() == 1)
     {
       right();
     }
     if (GO.BtnA.isPressed())
     {
       this->select();
+    }
+    
+    if (GO.BtnB.isPressed()) 
+    {
+      return;
     }
     //-------------Start Screen--------------
     if (millis() - offsetS >= 900 && !beginGame)

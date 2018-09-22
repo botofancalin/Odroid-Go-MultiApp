@@ -201,7 +201,7 @@ ILI9341::ILI9341(int16_t w, int16_t h)
 void ILI9341::begin(void)
 {
   init();
-  ledcSetup(BLK_PWM_CHANNEL, 5000, 8);
+  ledcSetup(BLK_PWM_CHANNEL, 20000, 8);
   ledcAttachPin(TFT_BL, BLK_PWM_CHANNEL);
   ledcWrite(BLK_PWM_CHANNEL, 80);
 }
@@ -378,12 +378,6 @@ void ILI9341::init(void)
     spi_begin();
 
     writecommand(ILI9341_DISPON); //Display on
-
-    // #ifdef M5STACK
-    //   // Turn on the back-light LED
-    //   digitalWrite(TFT_BL, HIGH);
-    //   pinMode(TFT_BL, OUTPUT);
-    // #endif
   }
 
   spi_end();

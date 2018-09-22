@@ -40,28 +40,6 @@ void setup()
 	GO.show();
 }
 
-// void displayButtons()
-// {
-//     GO.Lcd.clear();
-//     GO.Lcd.setCursor(0, 0);
-
-//     GO.Lcd.println("/* Direction pad */");
-//     GO.Lcd.printf("Joy-Y-Up: %s \n", (GO.JOY_Y.isAxisPressed() == 2) ? "Pressed" : " ");
-//     GO.Lcd.printf("Joy-Y-Down: %s \n", (GO.JOY_Y.isAxisPressed() == 1) ? "Pressed" : " ");
-//     GO.Lcd.printf("Joy-X-Left: %s \n", (GO.JOY_X.isAxisPressed() == 2) ? "Pressed" : " ");
-//     GO.Lcd.printf("Joy-X-Right: %s \n", (GO.JOY_X.isAxisPressed() == 1) ? "Pressed" : " ");
-//     GO.Lcd.println("");
-//     GO.Lcd.println("/* Function key */");
-//     GO.Lcd.printf("Menu: %s \n", (GO.BtnMenu.isPressed() == 1) ? "Pressed" : " ");
-//     GO.Lcd.printf("Volume: %s \n", (GO.BtnVolume.isPressed() == 1) ? "Pressed" : " ");
-//     GO.Lcd.printf("Select: %s \n", (GO.BtnSelect.isPressed() == 1) ? "Pressed" : " ");
-//     GO.Lcd.printf("Start: %s \n", (GO.BtnStart.isPressed() == 1) ? "Pressed" : " ");
-//     GO.Lcd.println("");
-//     GO.Lcd.println("/* Actions */");
-//     GO.Lcd.printf("B: %s \n", (GO.BtnB.isPressed() == 1) ? "Pressed" : " ");
-//     GO.Lcd.printf("A: %s \n", (GO.BtnA.isPressed() == 1) ? "Pressed" : " ");
-// }
-
 void loop()
 {
 	unsigned long now = millis();

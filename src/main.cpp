@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include "Wrappers.h"
 #include "Resources.h"
 
@@ -28,8 +27,8 @@ void setup()
 
 	GO.addMenuItem(1, "OSCILLOSCOPE", "<", "OK", ">", -1, Oscilloscope, appOscilloscope);
 	GO.addMenuItem(1, "WEBRADIO", "<", "OK", ">", -1, WebRadio, appWebRadio);
-	//GO.addMenuItem(1, "WEATHER STATION", "<", "OK", ">", -1, WeatherStation, appWeatherStation);
-	//GO.addMenuItem(1, "WEBSERVER", "<", "OK", ">", -1, Webserver, appWebServer);
+	GO.addMenuItem(1, "WEATHER STATION", "<", "OK", ">", -1, WeatherStation, appWeatherStation);
+	GO.addMenuItem(1, "WEBSERVER", "<", "OK", ">", -1, Webserver, appWebServer);
 	GO.addMenuItem(1, "SD BROWSER", "<", "OK", ">", -1, Browser, appSdBrowser);
 	//GO.addMenuItem(1, "TOOLS", "<", "OK", ">", -1, Tools, appListTools);
 	//GO.addMenuItem(1, "GAMES", "<", "OK", ">", -1, Games, appGamesList);

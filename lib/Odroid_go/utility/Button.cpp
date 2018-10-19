@@ -98,7 +98,7 @@ uint8_t Button::readAxis()
         pinVal = 1;
         _axis = DPAD_V_FULL;
     }
-    else if (val > 1500 && val < 2000)
+    else if (val > 1700 && val < 1900)
     {
         pinVal = 1;
         _axis = DPAD_V_HALF;

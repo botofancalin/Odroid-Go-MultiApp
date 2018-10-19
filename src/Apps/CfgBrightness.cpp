@@ -8,11 +8,11 @@ void CfgBrightnessClass::Run()
 
     while (!GO.BtnB.wasPressed())
     {
-        if ((GO.JOY_X.wasAxisPressed() == 2) && tmp_bright >= 16)
+        if ((GO.JOY_X.wasAxisPressed() == 2) && tmp_bright > 16)
         {
             tmp_bright = tmp_bright - 16;
         }
-        if ((GO.JOY_X.wasAxisPressed() == 1) && tmp_bright <= 239)
+        if ((GO.JOY_X.wasAxisPressed() == 1) && tmp_bright < 255)
         {
             tmp_bright = tmp_bright + 16;
         }

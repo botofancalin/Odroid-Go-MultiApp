@@ -319,8 +319,8 @@ void ODROID_GO::begin(unsigned long baud)
   pinMode(BUTTON_SELECT, INPUT_PULLUP);
   pinMode(BUTTON_START, INPUT_PULLUP);
   pinMode(BUTTON_VOLUME, INPUT_PULLUP);
-  pinMode(BUTTON_JOY_Y, INPUT_PULLDOWN);
-  pinMode(BUTTON_JOY_X, INPUT_PULLDOWN);
+  pinMode(BUTTON_JOY_Y, INPUT);
+  pinMode(BUTTON_JOY_X, INPUT);
 
   // ODROID_GO lcd INIT
   Lcd.begin();
@@ -331,6 +331,7 @@ void ODROID_GO::begin(unsigned long baud)
   Lcd.setTextSize(1);
   Lcd.setBrightness(255);
 
+  SD.end();
   SD.begin(22, SPI, 27000000UL);
 
   if (!SPIFFS.begin())

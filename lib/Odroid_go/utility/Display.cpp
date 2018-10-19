@@ -4219,7 +4219,7 @@ void ILI9341::sleep()
 
 void ILI9341::setBrightness(uint8_t brightness)
 {
-#ifdef M5STACK
+#if defined M5STACK || defined O_GO
   ledcWrite(BLK_PWM_CHANNEL, brightness);
 #else
   ledcWrite(BLK_PWM_CHANNEL, 255 - brightness);

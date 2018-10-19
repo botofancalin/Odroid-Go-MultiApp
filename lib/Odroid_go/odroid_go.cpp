@@ -101,12 +101,13 @@ void ODROID_GO::previousList()
     if (list_page > 0)
     {
       list_page--;
+      list_idx--;
     }
     else
     {
       list_page = list_pages - 1;
+      list_idx = list_count - 1;
     }
-    list_idx = list_page * LIST_PAGE_LABELS + list_lines - 1;
   }
   showList();
 }

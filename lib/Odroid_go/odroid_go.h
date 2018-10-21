@@ -72,7 +72,7 @@ class ODROID_GO
     void btnRestore();
     String lastBtnTittle[3];
 
-#define DEBOUNCE_MS 10
+#define DEBOUNCE_MS 20
     Button JOY_Y = Button(BUTTON_JOY_Y, true, DEBOUNCE_MS);
     Button JOY_X = Button(BUTTON_JOY_X, true, DEBOUNCE_MS);
     Button BtnA = Button(BUTTON_A_PIN, true, DEBOUNCE_MS);

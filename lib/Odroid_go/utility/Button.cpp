@@ -100,7 +100,7 @@ uint8_t Button::readAxis()
     }
     else if (val > 1700 && val < 1900)
     {
-        pinVal = 1;
+        pinVal = 2;
         _axis = DPAD_V_HALF;
     }
     else
@@ -109,10 +109,6 @@ uint8_t Button::readAxis()
         _axis = DPAD_V_NONE;
     }
 
-    if (_invert == 0)
-    {
-        pinVal = !pinVal;
-    }
     if (ms - _lastChange < _dbTime)
     {
         _lastTime = _time;

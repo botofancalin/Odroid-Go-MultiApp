@@ -45,21 +45,20 @@ void loop()
 	unsigned long now = millis();
 	if (now - lastcheck >= 1000)
 	{
+		GO.Lcd.setTextColor(WHITE, 15);
+		GO.Lcd.drawString("Batt: " + String(GO.battery.getPercentage()) + " %", 10, 5, 2);
 		GO.WiFi_Mode = WiFi.getMode();
 		if (GO.WiFi_Mode == WIFI_MODE_STA && WiFi.isConnected())
 		{
-			GO.Lcd.setTextColor(WHITE, 15);
 			SignalStrength = map(100 + WiFi.RSSI(), 5, 90, 0, 100);
 			GO.Lcd.drawRightString("WiFi: " + String(SignalStrength) + " %", 310, 5, 2);
 		}
 		else if (GO.WiFi_Mode == WIFI_MODE_APSTA)
 		{
-			GO.Lcd.setTextColor(WHITE, 15);
 			GO.Lcd.drawRightString("Clients: " + String(WiFi.softAPgetStationNum()), 300, 5, 2);
 		}
 		else if (GO.WiFi_Mode == WIFI_MODE_NULL)
 		{
-			GO.Lcd.setTextColor(WHITE, 15);
 			GO.Lcd.drawRightString("Wifi OFF", 310, 5, 2);
 		}
 		lastcheck = now;

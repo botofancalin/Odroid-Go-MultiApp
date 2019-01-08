@@ -333,7 +333,7 @@ void ODROID_GO::begin(unsigned long baud)
   Lcd.setBrightness(255);
 
   SD.end();
-  SD.begin(22, SPI);
+  SD.begin(22, SPI, 40000000UL);
 
   if (!SPIFFS.begin())
   {

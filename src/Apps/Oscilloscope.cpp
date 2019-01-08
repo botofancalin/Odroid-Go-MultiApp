@@ -1,6 +1,7 @@
 #include "Oscilloscope.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
+ bool Gen = true;
 
 void OscilloscopeClass::DrawText()
 {
@@ -19,6 +20,7 @@ void OscilloscopeClass::DrawText()
 	GO.Lcd.drawString(String(TRIG_Modes[trig_mode]), 272, 110);
 	GO.Lcd.drawString(String("T.LVL:" + String(trig_lv - 30)), 272, 120, 1);
 	GO.Lcd.drawString(String((trig_edge == TRIG_E_UP) ? "T.E: UP" : "T.E: DN"), 272, 130, 1);
+	GO.Lcd.drawString(String("Gen:" + String(Generator[Gen])), 272, 140, 1);
 	GO.Lcd.setTextColor(WHITE, BLACK);
 }
 
@@ -28,7 +30,7 @@ void OscilloscopeClass::CheckSW()
 	if (GO.JOY_Y.wasAxisPressed() == 1)
 	{
 		last_menu = menu;
-		(menu < 120) ? (menu += 10) : (menu = 19);
+		(menu < 130) ? (menu += 10) : (menu = 19);
 		DrawText();
 		return;
 	}
@@ -36,7 +38,7 @@ void OscilloscopeClass::CheckSW()
 	else if (GO.JOY_Y.wasAxisPressed() == 2)
 	{
 		last_menu = menu;
-		(menu > 19) ? (menu -= 10) : (menu = 120);
+		(menu > 19) ? (menu -= 10) : (menu = 130);
 		DrawText();
 		return;
 	}
@@ -121,6 +123,9 @@ void OscilloscopeClass::CheckSW()
 		case 129:
 			trig_edge = !trig_edge;
 			break;
+		case 139:
+			Gen = !Gen;
+			break;
 		}
 		DrawText();
 		return;
@@ -203,6 +208,9 @@ void OscilloscopeClass::CheckSW()
 			break;
 		case 129:
 			trig_edge = !trig_edge;
+			break;
+		case 139:
+			Gen = !Gen;
 			break;
 		}
 		DrawText();
@@ -309,6 +317,23 @@ void OscilloscopeClass::ClearAndDrawDot(int i)
 	DrawGrid(i);
 }
 
+const uint8_t gen_pin = 12;
+
+void SigGen_Task(void *parameter)
+{
+	pinMode(gen_pin, OUTPUT);
+	for (;;)
+	{
+		if (Gen) 
+		{
+			digitalWrite(gen_pin, !digitalRead(gen_pin));
+		}
+		delay(3);
+	}
+	vTaskDelete(NULL);
+}
+
+
 void OscilloscopeClass::Run()
 {
 	pinMode(4, ANALOG);
@@ -317,6 +342,17 @@ void OscilloscopeClass::Run()
 	GO.Lcd.fillScreen(BLACK);
 	DrawGrid();
 
+	if (Sig_Gen == NULL)
+	{
+		xTaskCreatePinnedToCore(
+			SigGen_Task,		/* Task function. */
+			"Signal Generator", /* name of the task, a name just for humans */
+			1024,				/* Stack size of task */
+			NULL,				/* parameter of the task */
+			2,					/* priority of the task */
+			&Sig_Gen,			/* Task handle to keep track of the created task */
+			0);					/* cpu core number where the task is assigned*/
+	}
 	while (!GO.BtnB.wasPressed())
 	{
 		if (trig_mode != TRIG_SCAN)
@@ -490,6 +526,8 @@ OscilloscopeClass::OscilloscopeClass()
 
 OscilloscopeClass::~OscilloscopeClass()
 {
+	vTaskDelete(Sig_Gen);
+	Sig_Gen = NULL;
 	dacWrite(26, 0);
 	GO.Lcd.fillScreen(BLACK);
 	GO.show();

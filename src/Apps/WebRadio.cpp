@@ -108,8 +108,8 @@ void WebRadioClass::Run()
 				unsigned long now = millis();
 				if (now - lastcheck >= 1000)
 				{
-
 					GO.Lcd.setTextColor(WHITE, 15);
+					GO.Lcd.drawString("Batt: " + String(GO.battery.getPercentage()) + " %", 10, 5, 2);
 					SignalStrength = map(100 + WiFi.RSSI(), 5, 90, 0, 100);
 					GO.Lcd.drawRightString("WiFi: " + String(SignalStrength) + " %", 310, 5, 2);
 					lastcheck = now;

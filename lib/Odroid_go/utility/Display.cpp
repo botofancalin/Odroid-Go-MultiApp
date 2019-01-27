@@ -4489,7 +4489,6 @@ static uint32_t jpgWrite(JDEC *decoder, void *bitmap, JRECT *rect)
       if (pixIndex == 32)
       {
         jpeg->tft->writePixels(pixBuf, 32);
-        // SPI.writePixels((uint8_t *)pixBuf, 64);
         pixIndex = 0;
       }
     }

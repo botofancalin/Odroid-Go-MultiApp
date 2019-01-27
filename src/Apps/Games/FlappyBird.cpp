@@ -219,7 +219,7 @@ void FlappyBirdClass::game_start()
     GO.Lcd.setTextSize(3);
     GO.Lcd.drawString("-BIRD-", TFTW2 - (6 * 9), TFTH2 + 8);
     GO.Lcd.setTextSize(2);
-    GO.Lcd.drawString("M5Stack", 10, TFTH2 - 36);
+    GO.Lcd.drawString("OdroidGO", 10, TFTH2 - 36);
     GO.Lcd.drawString("Mod by Calin", TFTW2 - (17 * 9), TFTH2 + 36);
     while (1)
     {

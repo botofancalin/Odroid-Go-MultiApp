@@ -9,8 +9,8 @@ extern "C"
 
 #define ESP_MANUFACTURER "ESPRESSIF"
 #define ESP_MODEL_NUMBER "ESP32"
-#define ESP_MODEL_NAME "MULTIAPP FW"
-#define ESP_DEVICE_NAME "M5STACK"
+#define ESP_MODEL_NAME "MULTIAPP_FW"
+#define ESP_DEVICE_NAME "ODROID_GO"
 
 static esp_wps_config_t config;
 

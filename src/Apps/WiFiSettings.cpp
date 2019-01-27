@@ -6,10 +6,9 @@ void WifiSettingsClass::AP_Mode()
     vTaskDelay(200 / portTICK_PERIOD_MS);
     WiFi.mode(WIFI_MODE_AP);
     GO.WiFi_Mode = WIFI_MODE_AP;
-    WiFi.begin("M5Stack");
-    WiFi.softAPsetHostname("M5Stack");
+    WiFi.softAP("OrdoidGO");
     GO.Lcd.drawString("AP Mode Started", 5, 50, 2);
-    GO.Lcd.drawString("Host Name: M5Stack", 5, 70, 2);
+    GO.Lcd.drawString("Host Name: OdroidGo", 5, 70, 2);
     GO.Lcd.drawString("IP Address: " + WiFi.softAPIP().toString(), 5, 90, 2);
 }
 
